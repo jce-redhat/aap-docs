@@ -7,6 +7,13 @@
 [role="_abstract"]
 Choose the setup bundle to download {PlatformNameShort} for disconnected installations. This bundle includes the RPM content for {PlatformNameShort} and the default {ExecEnvShort} images that will be uploaded to your {PrivateHubName} during the installation process.
 
+The xref:ref-single-controller-hub-ext-database-inventory[Single {ControllerName} and single {HubName} with external (installer managed) database] installation scenario is recommended for disconnected installations.  On a disconnected network, the {HubName} will provide a repository for {ExecEnvShort} (EE) images and Ansible content collections that are normally available from internet-connected locations. The installer bundle will copy the default EE images to the {HubName}, as well as a set of certified collections for supporting common automation use cases.
+
+[NOTE]
+====
+The `registry_url`, `registry_username`, and `registry_password` installation file variables are not required when installing in and disconnected environment, see xref:con-install-scenario-recommendations[]
+====
+
 
 .Procedure
 
@@ -22,40 +29,41 @@ $ cd ansible-automation-platform-setup-bundle-2.4-1
 +
 . Edit the inventory file to include the required options:
 
-.. automationcontroller group
-.. automationhub group
-.. admin_password
-.. pg_password
-.. automationhub_admin_password
-.. automationhub_pg_host, automationhub_pg_port
-.. automationhub_pg_password
+.. `automationcontroller` host group
+.. `automationhub` host group
+.. `database` host group
+.. `admin_password` variable
+.. `pg_host` and `pg_port` variables
+.. `pg_password` variable
+.. `automationhub_admin_password` variable
+.. `automationhub_pg_host` and `automationhub_pg_port` variables
+.. `automationhub_pg_password` variable
 +
 *Example Inventory file*
 +
 ----
 [automationcontroller]
-automationcontroller.example.org ansible_connection=local
-
-[automationcontroller:vars]
-peers=execution_nodes
+automationcontroller.example.org
 
 [automationhub]
 automationhub.example.org
 
+[database]
+aapdatabase.example.org
+
 [all:vars]
 admin_password='password123'
 
+pg_host='aapdatabase.example.org'
+pg_port=5432
 pg_database='awx'
 pg_username='awx'
 pg_password='dbpassword123'
-
-receptor_listener_port=27199
+pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
 
 automationhub_admin_password='hubpassword123'
-
-automationhub_pg_host='automationcontroller.example.org'
+automationhub_pg_host='aapdatabase.example.org'
 automationhub_pg_port=5432
-
 automationhub_pg_database='automationhub'
 automationhub_pg_username='automationhub'
 automationhub_pg_password='dbpassword123'

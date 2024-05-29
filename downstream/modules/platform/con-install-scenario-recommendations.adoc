@@ -18,4 +18,4 @@ Do not use `localhost`.
 * `admin` is the default user ID for the initial log in to {PlatformNameShort} and cannot be changed in the inventory file.
 * Use of special characters for `pg_password` is limited. The `!`, `#`, `0` and `@` characters are supported. Use of other special characters can cause the setup to fail.
 * Enter your Red Hat Registry Service Account credentials in `registry_username` and `registry_password` to link to the Red Hat container registry.
-* The inventory file variables `registry_username` and `registry_password` are only required if a non-bundle installer is used.
+* The inventory file variables `registry_url`, `registry_username`, and `registry_password` are not required if the setup bundle installer is used.

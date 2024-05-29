@@ -7,17 +7,17 @@ ifdef::context[:parent-context: {context}]
 = Disconnected installation
 
 [role="_abstract"]
-If you are not connected to the internet or do not have access to online repositories, you can install {PlatformName} without an active internet connection.
+If you are not connected to the internet or do not have access to online repositories, you can install {PlatformName} without an active internet connection.  Installing on a disconnected network is generally the same as the standard installation process described elsewhere in this document, with any exceptions noted below.
 
 == Prerequisites
 
 Before installing {PlatformNameShort} on a disconnected network, you must meet the following prerequisites:
 
-. A created subscription manifest. See link:{BaseURL}/red_hat_ansible_automation_platform/{PlatformVers}/html/red_hat_ansible_automation_platform_operations_guide/assembly-aap-obtain-manifest-files#doc-wrapper[Obtaining a manifest file] for more information.
+. Create a subscription manifest. See link:{BaseURL}/red_hat_ansible_automation_platform/{PlatformVers}/html/red_hat_ansible_automation_platform_operations_guide/assembly-aap-obtain-manifest-files#doc-wrapper[Obtaining a manifest file] for more information.
 
-. The {PlatformNameShort} setup bundle at link:{PlatformDownloadUrl}[Customer Portal] is downloaded.
+. Download the {PlatformNameShort} setup bundle at link:{PlatformDownloadUrl}[Customer Portal].  The bundled installer is required for all disconnected installations.
 
-. The link:https://docs.ansible.com/ansible/latest/collections/community/general/nsupdate_module.html[DNS records] for the {ControllerName} and {PrivateHubName} servers are created.
+. Create the link:https://docs.ansible.com/ansible/latest/collections/community/general/nsupdate_module.html[DNS records] for the {ControllerName} and {PrivateHubName} servers.
 
 
 include::platform/con-aap-installation-on-disconnected-rhel.adoc[leveloffset=+1]

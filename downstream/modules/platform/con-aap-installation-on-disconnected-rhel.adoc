@@ -4,7 +4,7 @@
 = {PlatformNameShort} installation on disconnected RHEL
 
 [role="_abstract"]
-You can install {PlatformNameShort} {ControllerName} and {PrivateHubName} without an internet connection by using the installer-managed database located on the {ControllerName}. Use the setup bundle for a disconnected installation as it includes additional components that make installing {PlatformNameShort} easier in a disconnected environment. These include the {PlatformNameShort} Red Hat package managers (RPMs) and the default {ExecEnvShort} (EE) images.
+You can install {PlatformNameShort} {ControllerName} and {PrivateHubName} without an internet connection by using the installation setup bundle instead of the standard installer. The setup bundle includes additional components that make installing {PlatformNameShort} easier in a disconnected environment. These include the {PlatformNameShort} software packages (RPMs), the default {ExecEnvShort} (EE) images, and a curated set of certified Ansible content collections.
 
 == System requirements for disconnected installation
 
@@ -12,7 +12,7 @@ Ensure that your system has all the hardware requirements before performing a di
 
 == RPM Source
 
-RPM dependencies for {PlatformNameShort} that come from the BaseOS and AppStream repositories are not included in the setup bundle. To add these dependencies, you must first obtain access to BaseOS and AppStream repositories. Use Satellite to sync repositories and add dependencies. If you prefer an alternative tool, you can choose between the following options:
+RPM dependencies for {PlatformNameShort} that come from the RHEL BaseOS and AppStream repositories are not included in the setup bundle. If you already have a Red Hat Satellite Server in your disconnected environment, each {PlatformNameShort} RHEL server ({ControllerName}, {PrivateNubName}, and so on) should be subcribed to your Satellite Server for access to the BaseOS and AppStream repositories.  If a Satellite Server is not available, you can choose between the following options:
 
 * Reposync
 * The RHEL Binary DVD
